@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 import static slangdictionary.SlangDictionary.ShowMenuAfterFunction;
 
@@ -248,5 +249,25 @@ public class Functions {
         catch (Exception ex) {
             System.out.println("Error: "+ex);
         }
+    }
+    
+    public static void RandomSlangWord(){
+        int count=0;
+        Random rd = new Random();
+        int ramdNum = rd.nextInt(slangWord.size());
+        String key = "";
+        for (String i: slangWord.keySet())
+        {
+            if (count == ramdNum)
+            {
+                key = i;
+                break;
+            }else count++;
+        }
+        System.out.print("Your random Slangword is : ");
+        System.out.println(key);
+        System.out.print("And it mean:   ");
+        List<String> value = Functions.slangWord.get(key);
+        System.out.println(value);
     }
 }

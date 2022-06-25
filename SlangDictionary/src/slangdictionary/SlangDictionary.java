@@ -4,6 +4,7 @@
  */
 package slangdictionary;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -72,6 +73,10 @@ public class SlangDictionary {
         else if(choice.equals("7"))
         {
             Functions.ResetSlang();
+        }
+        else if(choice.equals("8"))
+        {
+            Functions.RandomSlangWord(); 
         }
     }
     
