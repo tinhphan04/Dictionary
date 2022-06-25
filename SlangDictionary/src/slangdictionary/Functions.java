@@ -7,34 +7,39 @@ package slangdictionary;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import static slangdictionary.SlangDictionary.ShowMenuAfterFunction;
 
 /**
  *
  * @author tinh.pv
  */
 public class Functions {
-    public static HashMap<String, List<String>> word = new HashMap<String, List<String>>();
+    
+    public static HashMap<String, List<String>> slangWord = new HashMap<String, List<String>>();
     public static Scanner keyword= new Scanner(System.in);
+    public static List<String> historyFind = new ArrayList<String>();
     
     public static void GetSlangFromFile(){
      try
      {
-        File f=new File("slang.txt");
-        FileReader fr=new FileReader(f);
-        BufferedReader br=new BufferedReader(fr);
+        File f = new File("slang.txt");
+        FileReader fr = new FileReader(f);
+        BufferedReader br = new BufferedReader(fr);
         String line;
-        while((line=br.readLine())!=null)
+        while((line = br.readLine())!=null)
         {
+            //Dòng dữ liệu phải tồn tại ký tự "`" để phân biệt key và value
             if (line.contains("`"))
             {
-                String[] s=line.split("`");
-                String[] tmp=s[1].split("\\|");
-                List<String> temp=Arrays.asList(tmp);
-                word.put(s[0],temp);
+                String[] rs = line.split("`");
+                String[] temp = rs[1].split("\\|");
+                List<String> mean = Arrays.asList(temp);
+                slangWord.put(rs[0],mean);
             }
         }
         fr.close();
@@ -48,14 +53,13 @@ public class Functions {
     
     public static void Find()
     {
-        //clearScreen();
-        System.out.print("What word u want to find: ");
+        System.out.print("Please type your word do you find: ");
         String check=keyword.nextLine();
-        //check=check.toUpperCase();
-        List<String> test=word.get(check);
+        List<String> test=slangWord.get(check);
         //historySlangWord.add(check);
         System.out.println(test);
-        //pauseScreen();
-        //Menu();
+        ShowMenuAfterFunction();
     }
+    
+    
 }
