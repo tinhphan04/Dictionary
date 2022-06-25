@@ -113,12 +113,41 @@ public class Functions {
         if (!isExists)
         {
             slangWord.put(input, value);
-            System.out.println("Add New Slang Word Successfully");
+            System.out.println("Add New Slangword Successfully");
         }
         else
         {
             System.out.println("Slagword is already not create new.");
         }
         ShowMenuAfterFunction();
+    }
+    
+    static void EditSlangWord(){
+        System.out.print("Please type Slagword you want to edit: ");
+        String input = keyword.nextLine();
+        
+        boolean isExists = false;
+        
+        for (String i: slangWord.keySet())
+        {
+            if (i.equals(input))
+            {
+                isExists = true;
+            }
+        }
+        if (!isExists)
+        {
+            System.out.println("This slangword dont't exist");
+            ShowMenuAfterFunction();
+        }
+        else{
+            System.out.println("Please type mean of Slagword: ");
+            String mean= keyword.nextLine();
+            List<String> value=new ArrayList();
+            value.add(mean);
+            slangWord.replace(input, value);
+            System.out.println("Edit Slagword Successfully");
+            ShowMenuAfterFunction();
+        }
     }
 }

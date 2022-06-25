@@ -56,6 +56,10 @@ public class SlangDictionary {
         {
             Functions.AddSlangWord();
         }
+        else if(choice.equals("5"))
+        {
+            Functions.EditSlangWord();
+        }
     }
     
     public static void ShowMenuAfterFunction()
