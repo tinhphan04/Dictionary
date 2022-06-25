@@ -24,6 +24,7 @@ public class Functions {
     public static Scanner keyword = new Scanner(System.in);
     public static List<String> historyFind = new ArrayList<String>();
     
+    
     public static void GetSlangFromFile(){
      try
      {
@@ -56,7 +57,9 @@ public class Functions {
         System.out.print("Please type word you want to find: ");
         String input = keyword.nextLine();
         List<String> result = slangWord.get(input);
-        //historySlangWord.add(check);
+        //Lưu từ khóa tìm kiếm và history
+        historyFind.add(input);
+        System.out.print(input + " is mean: ");
         System.out.println(result);
         ShowMenuAfterFunction();
     }
@@ -65,7 +68,8 @@ public class Functions {
     {
         System.out.println("Please type definition you want to find: ");
         String input = keyword.nextLine();
-        //historySlangWord.add(check);
+        //Lưu từ khóa tìm kiếm và history
+        historyFind.add(input);
         List<String> answer = new ArrayList();
         for (String i: slangWord.keySet())
         {
@@ -73,9 +77,18 @@ public class Functions {
             {
                 answer.add(i);
             }
-
         }
+        System.out.print(input + " are mean: ");
         System.out.println(answer);
+        ShowMenuAfterFunction();
+    }
+    
+    public static void GetHistory()
+    {
+        System.out.println("Your history search: ");
+        for (String string : historyFind) {
+            System.out.println(string);
+        }
         ShowMenuAfterFunction();
     }
 }

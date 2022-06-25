@@ -47,6 +47,10 @@ public class SlangDictionary {
         {
             Functions.FindDefinition();
         }
+        else if(choice.equals("3"))
+        {
+            Functions.GetHistory();
+        }
     }
     
     public static void ShowMenuAfterFunction()
