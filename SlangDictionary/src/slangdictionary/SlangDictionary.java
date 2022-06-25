@@ -43,6 +43,10 @@ public class SlangDictionary {
         {
            Functions.Find();
         }
+        else if(choice.equals("2"))
+        {
+            Functions.FindDefinition();
+        }
     }
     
     public static void ShowMenuAfterFunction()

@@ -21,7 +21,7 @@ import static slangdictionary.SlangDictionary.ShowMenuAfterFunction;
 public class Functions {
     
     public static HashMap<String, List<String>> slangWord = new HashMap<String, List<String>>();
-    public static Scanner keyword= new Scanner(System.in);
+    public static Scanner keyword = new Scanner(System.in);
     public static List<String> historyFind = new ArrayList<String>();
     
     public static void GetSlangFromFile(){
@@ -53,13 +53,29 @@ public class Functions {
     
     public static void Find()
     {
-        System.out.print("Please type your word do you find: ");
-        String check=keyword.nextLine();
-        List<String> test=slangWord.get(check);
+        System.out.print("Please type word you want to find: ");
+        String input = keyword.nextLine();
+        List<String> result = slangWord.get(input);
         //historySlangWord.add(check);
-        System.out.println(test);
+        System.out.println(result);
         ShowMenuAfterFunction();
     }
     
-    
+    public static void FindDefinition()
+    {
+        System.out.println("Please type definition you want to find: ");
+        String input = keyword.nextLine();
+        //historySlangWord.add(check);
+        List<String> answer = new ArrayList();
+        for (String i: slangWord.keySet())
+        {
+            if (i.contains(input))
+            {
+                answer.add(i);
+            }
+
+        }
+        System.out.println(answer);
+        ShowMenuAfterFunction();
+    }
 }
