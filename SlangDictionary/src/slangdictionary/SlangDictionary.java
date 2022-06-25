@@ -39,6 +39,7 @@ public class SlangDictionary {
         System.out.println("12. Exit ");
         System.out.println("Please Choice:  ");
         String choice = options.nextLine();
+        
         if(choice.equals("1"))
         {
            Functions.Find();
@@ -50,6 +51,10 @@ public class SlangDictionary {
         else if(choice.equals("3"))
         {
             Functions.GetHistory();
+        }
+        else if(choice.equals("4"))
+        {
+            Functions.AddSlangWord();
         }
     }
     

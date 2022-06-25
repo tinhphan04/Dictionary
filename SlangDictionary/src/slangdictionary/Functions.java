@@ -91,4 +91,34 @@ public class Functions {
         }
         ShowMenuAfterFunction();
     }
+    
+    public static void AddSlangWord()
+    {
+        System.out.println("Please type Slagword you want to create: ");
+        String input = keyword.nextLine();
+        System.out.println("Please type mean of Slagword: ");
+        String mean= keyword.nextLine();
+        List<String> value=new ArrayList();
+        value.add(mean);
+        
+        boolean isExists = false;
+        
+        for (String i: slangWord.keySet())
+        {
+            if (i.equals(input))
+            {
+                isExists = true;
+            }
+        }
+        if (!isExists)
+        {
+            slangWord.put(input, value);
+            System.out.println("Add New Slang Word Successfully");
+        }
+        else
+        {
+            System.out.println("Slagword is already not create new.");
+        }
+        ShowMenuAfterFunction();
+    }
 }
