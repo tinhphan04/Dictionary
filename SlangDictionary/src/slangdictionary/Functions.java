@@ -5,8 +5,10 @@
 package slangdictionary;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -26,6 +28,33 @@ public class Functions {
     
     
     public static void GetSlangFromFile(){
+     try
+     {
+        File f = new File("slangout.txt");
+        FileReader fr = new FileReader(f);
+        BufferedReader br = new BufferedReader(fr);
+        String line;
+        while((line = br.readLine())!=null)
+        {
+            //Dòng dữ liệu phải tồn tại ký tự "`" để phân biệt key và value
+            if (line.contains("`"))
+            {
+                String[] rs = line.split("`");
+                String[] temp = rs[1].split("\\|");
+                List<String> mean = Arrays.asList(temp);
+                slangWord.put(rs[0],mean);
+            }
+        }
+        fr.close();
+        br.close();
+    }
+    catch (Exception ex)
+    {
+        System.out.println("ERROR"+ex);
+    }
+    }
+    
+    public static void GetSlangFromFileDefault(){
      try
      {
         File f = new File("slang.txt");
@@ -113,6 +142,7 @@ public class Functions {
         if (!isExists)
         {
             slangWord.put(input, value);
+            updateFile();
             System.out.println("Add New Slangword Successfully");
         }
         else
@@ -146,6 +176,7 @@ public class Functions {
             List<String> value=new ArrayList();
             value.add(mean);
             slangWord.replace(input, value);
+            updateFile();
             System.out.println("Edit Slagword Successfully");
             ShowMenuAfterFunction();
         }
@@ -172,6 +203,7 @@ public class Functions {
             if (confirm.equals("Y"))
             {
                 slangWord.remove(input);
+                updateFile();
                 System.out.println("Delete Slangword Successfully");
                 ShowMenuAfterFunction();
             }
@@ -182,6 +214,39 @@ public class Functions {
         else{
             System.out.println("Slangword not exists");
             ShowMenuAfterFunction();
+        }
+    }
+    
+    public static void ResetSlang()
+    {
+        slangWord.clear();
+        GetSlangFromFileDefault();
+        updateFile();
+        ShowMenuAfterFunction();
+    }
+    
+    public static void updateFile()
+    {
+        try {
+            File f = new File("slangout.txt");
+            FileWriter fw = new FileWriter(f);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (String i: slangWord.keySet())
+            {
+                fw.write(i +"`");
+                List<String> temp= slangWord.get(i);
+                for (int t=0;t<temp.size();t++)
+                {
+                    fw.write(temp.get(t));
+                    if (t+1<temp.size()) fw.write("|");
+                }
+                fw.write("\n");
+            }
+            fw.close();
+            bw.close();
+        }
+        catch (Exception ex) {
+            System.out.println("Error: "+ex);
         }
     }
 }

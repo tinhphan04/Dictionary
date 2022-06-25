@@ -19,6 +19,11 @@ public class SlangDictionary {
     public static void main(String[] args) {
         // TODO code application logic here
         Functions.GetSlangFromFile();
+        if(Functions.slangWord.isEmpty())
+        {
+            Functions.GetSlangFromFileDefault();
+            Functions.updateFile();
+        }
         Menu();
         
     }
@@ -64,6 +69,10 @@ public class SlangDictionary {
         {
             Functions.DeleteSlangWord();
         }
+        else if(choice.equals("7"))
+        {
+            Functions.ResetSlang();
+        }
     }
     
     public static void ShowMenuAfterFunction()
@@ -77,5 +86,7 @@ public class SlangDictionary {
             System.exit(0);
         }
     }
+    
+    
     
 }
