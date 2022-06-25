@@ -42,7 +42,7 @@ public class SlangDictionary {
         System.out.println("9. Minigame find Definition ");
         System.out.println("10. Minigame find SlangWord ");
         System.out.println("11. Clear History");
-        System.out.println("12. Exit ");
+        System.out.println("E. Exit ");
         System.out.println("Please Choice:  ");
         String choice = options.nextLine();
         
@@ -77,6 +77,14 @@ public class SlangDictionary {
         else if(choice.equals("8"))
         {
             Functions.RandomSlangWord(); 
+        }
+        else if(choice.equals("9"))
+        {
+            Functions.GameRandomSlang();
+        }
+        else if(choice.equals("E"))
+        {
+            System.exit(0);
         }
     }
     
