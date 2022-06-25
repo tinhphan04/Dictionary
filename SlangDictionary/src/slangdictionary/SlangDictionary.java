@@ -60,6 +60,10 @@ public class SlangDictionary {
         {
             Functions.EditSlangWord();
         }
+        else if(choice.equals("6"))
+        {
+            Functions.DeleteSlangWord();
+        }
     }
     
     public static void ShowMenuAfterFunction()

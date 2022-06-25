@@ -150,4 +150,38 @@ public class Functions {
             ShowMenuAfterFunction();
         }
     }
+    
+    static void DeleteSlangWord()
+    {
+        System.out.println("Please type Slang you want to delete: ");
+        String input = keyword.nextLine();
+        boolean isExists = false;
+        
+        for (String i: slangWord.keySet())
+        {
+            if (i.equals(input))
+            {
+                isExists = true;
+            }
+        }
+        if(isExists)
+        {
+            System.out.println("Are you sure want to delete it (Y/N)? ");
+            String confirm = keyword.nextLine().toUpperCase();
+            
+            if (confirm.equals("Y"))
+            {
+                slangWord.remove(input);
+                System.out.println("Delete Slangword Successfully");
+                ShowMenuAfterFunction();
+            }
+            else{
+                ShowMenuAfterFunction();
+            }
+        }
+        else{
+            System.out.println("Slangword not exists");
+            ShowMenuAfterFunction();
+        }
+    }
 }
