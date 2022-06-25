@@ -342,7 +342,7 @@ public class Functions {
         ShowMenuAfterFunction();
     }
     
-    public static void GuessGameB()
+    public static void GameRandomDefinition()
     {
         Random rand = new Random();
         List<String> poll=new ArrayList();
